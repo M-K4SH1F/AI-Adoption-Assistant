@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — AI Adoption Assistant{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1 class="page-title">AI Initiative Tracker</h1>
+        <p class="page-subtitle">Track and manage all active AI projects across the organization.</p>
+    </div>
+    <a href="{{ url_for('add_project') }}" class="btn btn-primary">+ Add Project</a>
+</div>
+
+<!-- Status Summary Cards -->
+<div class="cards-grid">
+    <div class="status-card card-planning">
+        <span class="card-number">{{ status_counts['Planning'] }}</span>
+        <span class="card-label">Planning</span>
+    </div>
+    <div class="status-card card-inprogress">
+        <span class="card-number">{{ status_counts['In Progress'] }}</span>
+        <span class="card-label">In Progress</span>
+    </div>
+    <div class="status-card card-completed">
+        <span class="card-number">{{ status_counts['Completed'] }}</span>
+        <span class="card-label">Completed</span>
+    </div>
+    <div class="status-card card-onhold">
+        <span class="card-number">{{ status_counts['On Hold'] }}</span>
+        <span class="card-label">On Hold</span>
+    </div>
+</div>
+
+<!-- Projects Table -->
+{% if projects %}
+<div class="table-container">
+    <table class="projects-table">
+        <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Description</th>
+                <th>Owner</th>
+                <th>Status</th>
+                <th>Latest Milestone</th>
+                <th>Added</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td class="project-name">{{ project['name'] }}</td>
+                <td class="project-desc">{{ project['description'] or '—' }}</td>
+                <td>{{ project['owner'] or '—' }}</td>
+                <td>
+                    <span class="status-badge status-{{ project['status'].lower().replace(' ', '-') }}">
+                        {{ project['status'] }}
+                    </span>
+                </td>
+                <td>{{ project['milestone'] or '—' }}</td>
+                <td class="date-cell">{{ project['created_at'][:10] }}</td>
+                <td class="actions-cell">
+                    <a href="{{ url_for('edit_project', project_id=project['id']) }}" class="btn btn-small btn-edit">Edit</a>
+                    <form method="POST" action="{{ url_for('delete_project', project_id=project['id']) }}"
+                          onsubmit="return confirm('Delete this project?');" style="display:inline;">
+                        <button type="submit" class="btn btn-small btn-delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="empty-state">
+    <p class="empty-icon">📂</p>
+    <h2>No projects yet</h2>
+    <p>Start by adding your first AI initiative.</p>
+    <a href="{{ url_for('add_project') }}" class="btn btn-primary">+ Add Project</a>
+</div>
+{% endif %}
+
+{% endblock %}

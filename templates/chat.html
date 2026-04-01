@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}AI Literacy Chat — AI Adoption Assistant{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1 class="page-title">AI Literacy Chatbot</h1>
+        <p class="page-subtitle">Ask anything about AI — get clear, plain-English answers.</p>
+    </div>
+</div>
+
+<!-- Suggested questions to get users started -->
+<div class="suggestions">
+    <span class="suggestions-label">Try asking:</span>
+    <button class="suggestion-chip" onclick="fillSuggestion(this)">What is a large language model?</button>
+    <button class="suggestion-chip" onclick="fillSuggestion(this)">How is AI used in enterprise software?</button>
+    <button class="suggestion-chip" onclick="fillSuggestion(this)">What's the difference between AI and automation?</button>
+    <button class="suggestion-chip" onclick="fillSuggestion(this)">What are the risks of using AI at work?</button>
+</div>
+
+<!-- Chat Window -->
+<div class="chat-container">
+    <div class="chat-messages" id="chat-messages">
+        <!-- Initial bot message -->
+        <div class="message message-bot">
+            <div class="message-avatar">🤖</div>
+            <div class="message-bubble">
+                Hi there! I'm your AI literacy assistant. Ask me anything about artificial intelligence — 
+                I'll explain it in plain English, no technical background needed.
+            </div>
+        </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="chat-input-area">
+        <input type="text" id="chat-input" class="chat-input"
+               placeholder="Ask a question about AI..."
+               onkeydown="if(event.key === 'Enter') sendMessage()">
+        <button class="btn btn-primary chat-send-btn" onclick="sendMessage()">Send</button>
+    </div>
+</div>
+{% endblock %}

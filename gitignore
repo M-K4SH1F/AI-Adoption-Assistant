@@ -1,0 +1,25 @@
+# Environment variables - never commit this
+.env
+
+# SQLite database
+instance/
+*.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

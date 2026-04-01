@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Newsletter Generator — AI Adoption Assistant{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1 class="page-title">AI Newsletter Generator</h1>
+        <p class="page-subtitle">Auto-generate an internal AI update newsletter from your project tracker.</p>
+    </div>
+</div>
+
+<div class="newsletter-layout">
+
+    <!-- Left: Project Summary -->
+    <div class="newsletter-sidebar">
+        <h2 class="section-title">Current Projects ({{ projects | length }})</h2>
+        {% if projects %}
+            {% for project in projects %}
+            <div class="project-mini-card">
+                <div class="mini-card-name">{{ project['name'] }}</div>
+                <span class="status-badge status-{{ project['status'].lower().replace(' ', '-') }}">
+                    {{ project['status'] }}
+                </span>
+                {% if project['owner'] %}
+                    <div class="mini-card-owner">👤 {{ project['owner'] }}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <form method="POST" action="{{ url_for('generate_newsletter_route') }}">
+                <button type="submit" class="btn btn-primary btn-full generate-btn">
+                    ✨ Generate Newsletter
+                </button>
+            </form>
+        {% else %}
+            <div class="empty-state-small">
+                <p>No projects to pull from.</p>
+                <a href="{{ url_for('add_project') }}" class="btn btn-secondary">Add Projects First</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Right: Generated Newsletter -->
+    <div class="newsletter-output">
+        <h2 class="section-title">Generated Newsletter</h2>
+
+        {% if newsletter %}
+            <div class="newsletter-box">
+                <div class="newsletter-actions">
+                    <button onclick="copyNewsletter()" class="btn btn-secondary btn-small">📋 Copy Text</button>
+                </div>
+                <div id="newsletter-content" class="newsletter-text">{{ newsletter }}</div>
+            </div>
+        {% else %}
+            <div class="newsletter-placeholder">
+                <span class="placeholder-icon">📰</span>
+                <p>Your generated newsletter will appear here.</p>
+                <p class="placeholder-sub">Click "Generate Newsletter" to create one from your current project data.</p>
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

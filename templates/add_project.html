@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Add Project — AI Adoption Assistant{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Add New AI Project</h1>
+        <p class="page-subtitle">Track a new AI initiative or proof-of-concept.</p>
+    </div>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">← Back</a>
+</div>
+
+<div class="form-container">
+    <form method="POST" action="{{ url_for('add_project') }}">
+
+        <div class="form-group">
+            <label for="name">Project Name <span class="required">*</span></label>
+            <input type="text" id="name" name="name" class="form-input"
+                   placeholder="e.g. Customer Support Chatbot" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" class="form-input form-textarea"
+                      placeholder="What is this AI project trying to solve?"></textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="owner">Project Owner</label>
+                <input type="text" id="owner" name="owner" class="form-input"
+                       placeholder="e.g. Sarah K.">
+            </div>
+
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status" class="form-input form-select">
+                    <option value="Planning">Planning</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                    <option value="On Hold">On Hold</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="milestone">Latest Milestone</label>
+            <input type="text" id="milestone" name="milestone" class="form-input"
+                   placeholder="e.g. Completed initial data pipeline, Demo to stakeholders scheduled">
+        </div>
+
+        <div class="form-actions">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Add Project</button>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
