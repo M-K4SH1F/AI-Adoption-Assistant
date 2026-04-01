@@ -176,4 +176,4 @@ Open [http://localhost:5000](http://localhost:5000) in your browser.
 
 **Mohammed Kashif Ahmed**  
 Software Engineering Student @ University of New Brunswick  
-[GitHub](https://github.com/M-K4SH1F) · [LinkedIn]([https://linkedin.com/in/YOUR_LINKEDIN](https://www.linkedin.com/in/mohammed-kashif-ahmed-77b2b9209/))
+[GitHub](https://github.com/M-K4SH1F) · [LinkedIn]([https://linkedin.com/in/mohammed-kashif-ahmed-77b2b9209/))
