@@ -139,21 +139,6 @@ Open [http://localhost:5000](http://localhost:5000) in your browser.
 
 ---
 
-## Environment Variables
-
-Create a `.env` file in the root directory based on `.env.example`:
-
-```env
-ANTHROPIC_API_KEY=your_anthropic_api_key_here
-SECRET_KEY=pick-a-random-secret-string-here
-```
-
-> ⚠️ Never commit your `.env` file. It's included in `.gitignore`.
-
-You can get an Anthropic API key at [console.anthropic.com](https://console.anthropic.com/).
-
----
-
 ## Usage
 
 ### Adding a Project
@@ -189,6 +174,6 @@ You can get an Anthropic API key at [console.anthropic.com](https://console.anth
 
 ## Author
 
-**Mohammed Alhajri**  
+**Mohammed Kashif Ahmed**  
 Software Engineering Student @ University of New Brunswick  
-[GitHub](https://github.com/YOUR_USERNAME) · [LinkedIn](https://linkedin.com/in/YOUR_LINKEDIN)
+[GitHub](https://github.com/M-K4SH1F) · [LinkedIn]([https://linkedin.com/in/YOUR_LINKEDIN](https://www.linkedin.com/in/mohammed-kashif-ahmed-77b2b9209/))
