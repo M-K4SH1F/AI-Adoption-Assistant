@@ -138,6 +138,20 @@ python app.py
 Open [http://localhost:5000](http://localhost:5000) in your browser.
 
 ---
+## Environment Variables
+
+Create a `.env` file in the root directory based on `.env.example`:
+
+```env
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+SECRET_KEY=pick-a-random-secret-string-here
+```
+
+> ⚠️ Never commit your `.env` file. It's included in `.gitignore`.
+
+You can get an Anthropic API key at [console.anthropic.com](https://console.anthropic.com/).
+
+---
 
 ## Usage
 
